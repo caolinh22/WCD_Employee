@@ -14,7 +14,7 @@ public class CreateEmployee extends HttpServlet {
     private Employee employee = new Employee();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/employee/create.jsp").forward(req, resp);
+        req.getRequestDispatcher("/employee/employee.jsp").forward(req, resp);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class CreateEmployee extends HttpServlet {
         if(!employee.isValid()){
             HashMap<String, String> errors = employee.getErrors();
             req.setAttribute("errors", errors);
-            req.getRequestDispatcher("/employee/create.jsp").forward(req, resp);
+            req.getRequestDispatcher("/employee/employee.jsp").forward(req, resp);
         }
         EmployeeService.create(employee);
         resp.sendRedirect("/employee/list.jsp");
